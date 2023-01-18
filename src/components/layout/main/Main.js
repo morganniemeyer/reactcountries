@@ -1,5 +1,15 @@
 import React from 'react';
+import { useCountries } from '../../../hooks/countries.js';
+import CountryCard from '../../countrycard/CountryCard.js';
 
 export default function Main() {
-  return <div>Main</div>;
+  const { countries } = useCountries();
+
+  return (
+    <main>
+      {countries.map((country) => (
+        <CountryCard key={country.id} {...country} />
+      ))}
+    </main>
+  );
 }

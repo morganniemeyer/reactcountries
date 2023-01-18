@@ -1,16 +1,15 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchCountries } from '../services/countries.js';
 
 export function useCountries() {
-  const [countries, listCountries] = useState([]);
+  const [countries, setCountries] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await fetchCountries();
-        listCountries(res);
+        setCountries(res);
       } catch (e) {
         setError('Welp, something is wrong');
       }
