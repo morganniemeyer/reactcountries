@@ -4,12 +4,12 @@ import Controls from '../../controls/Controls.js';
 import CountryCard from '../../countrycard/CountryCard.js';
 
 export default function Main() {
-  const { countries } = useCountries();
+  const { countries, theseCountries, setTheseCountries } = useCountries();
 
   return (
     <main>
-      <Controls />
-      {countries.map((country) => (
+      <Controls {...{ countries, setTheseCountries }} />
+      {theseCountries.map((country) => (
         <CountryCard key={country.id} {...country} />
       ))}
     </main>
